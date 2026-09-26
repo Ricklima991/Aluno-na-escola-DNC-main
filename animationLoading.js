@@ -1,16 +1,67 @@
-document.addEventListener("DOMContentLoaded", function() {
+/* ============================================================
+   CONFIG: troque pelo ID da SUA playlist pública do Spotify
+   ("Minhas favoritas"). Como pegar: app Spotify > sua playlist
+   > Compartilhar > Copiar link > o ID é o trecho após
+   "playlist/". As "Músicas curtidas" não têm link público,
+   então crie uma playlist pública com elas. Para tocar em
+   aleatório, ative o shuffle dentro do player.
+   ============================================================ */
+const SPOTIFY_PLAYLIST_ID = "37i9dQZEVXbMXbN3EUUhlg"; // Top Brasil (temporário)
+
+/* ---------- Tela de carregamento: carinha + CD ---------- */
+document.addEventListener("DOMContentLoaded", function () {
+    const bar = document.getElementById("loading-bar");
+    const text = document.getElementById("loading-text");
+    const screen = document.getElementById("loading-screen");
+    const smiley = document.getElementById("smiley");
+    const mouth = document.getElementById("smile-mouth");
     let width = 0;
-    let interval = setInterval(function() {
+
+    const interval = setInterval(function () {
         if (width >= 100) {
             clearInterval(interval);
-            document.getElementById('loading-screen').style.opacity = 0;
-            setTimeout(function() {
-                document.getElementById('loading-screen').style.display = 'none';
-            }, 500);
+            // Carinha sorri ao terminar :)
+            mouth.setAttribute("d", "M30 58 Q50 78 70 58");
+            smiley.classList.add("happy");
+            text.innerText = "Pronto!";
+            setTimeout(function () {
+                screen.style.opacity = 0;
+                setTimeout(function () {
+                    screen.style.display = "none";
+                }, 500);
+            }, 600);
         } else {
             width++;
-            document.getElementById('loading-bar').style.width = width + '%';
-            document.getElementById('loading-text').innerText = width + '%';
+            bar.style.width = width + "%";
+            text.innerText = width + "%";
         }
-    }, 10); 
+    }, 10);
 });
+
+/* ---------- Player Spotify: CD gira + play/pause ---------- */
+(function () {
+    const btn = document.getElementById("btnPlay");
+    const cd = document.getElementById("cdMini");
+    const frame = document.getElementById("spotifyFrame");
+    const baseSrc = "https://open.spotify.com/embed/playlist/" +
+        SPOTIFY_PLAYLIST_ID + "?utm_source=generator&theme=0";
+    let playing = false;
+
+    if (!btn || !frame) return;
+
+    btn.addEventListener("click", function () {
+        playing = !playing;
+        if (playing) {
+            // Autoplay só funciona após o clique (regra do navegador)
+            frame.src = baseSrc + "&autoplay=1";
+            cd.classList.add("spinning");
+            btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            btn.setAttribute("aria-label", "Pausar música");
+        } else {
+            frame.src = baseSrc;
+            cd.classList.remove("spinning");
+            btn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            btn.setAttribute("aria-label", "Tocar música");
+        }
+    });
+})();

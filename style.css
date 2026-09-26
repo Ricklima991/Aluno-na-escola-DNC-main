@@ -449,3 +449,198 @@ a {
 .freelancer img {
     animation: pulse 3s infinite ease-in-out;
 }
+
+/* ============================================================
+   CAMADA DE COR E VIDA (mantém a estrutura original)
+   ============================================================ */
+
+/* Fundo com gradiente animado */
+body {
+    background: linear-gradient(-45deg, #151515, #1d2b12, #0f2a1d, #241232, #151515);
+    background-size: 400% 400%;
+    animation: bgFlow 18s ease infinite;
+}
+
+@keyframes bgFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Entrada dos widgets em cascata */
+.content > div { animation: riseIn 0.7s ease both; }
+.content > div:nth-child(1) { animation-delay: 0.05s; }
+.content > div:nth-child(2) { animation-delay: 0.15s; }
+.content > div:nth-child(3) { animation-delay: 0.25s; }
+.content > div:nth-child(4) { animation-delay: 0.35s; }
+.content > div:nth-child(5) { animation-delay: 0.45s; }
+.content > div:nth-child(6) { animation-delay: 0.55s; }
+
+@keyframes riseIn {
+    from { opacity: 0; transform: translateY(26px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+}
+
+/* Brilho neon nos widgets escuros */
+.widget1, .widget2, .tread, .widget5, .widget6 {
+    border: 1px solid rgba(143, 226, 14, 0.18);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Ícones de skills sempre coloridos */
+.skills-icons .fa-html5 { color: #e34f26; }
+.skills-icons .fa-css3-alt { color: #1572b6; }
+.skills-icons .fa-js { color: #f7df1e; }
+.skills-icons .fa-bootstrap { color: #7952b3; }
+.skills-icons .fa-react { color: #61dafb; }
+.skills-icons .fa-node { color: #339933; }
+.skills-icons .fa-php { color: #777bb4; }
+.skills-icons .fa-java { color: #007396; }
+.skills-icons .fa-github { color: #fafafa; }
+.skills-icons .fa-wix { color: #ff5722; }
+.skills-icons .fa-wordpress { color: #21759b; }
+.skills-icons i { filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15)); }
+.skills-icons i:hover { transform: translateY(-4px) scale(1.15); }
+
+/* Redes sociais coloridas */
+.redes-sociais .tiktok i { color: #25f4ee; }
+.redes-sociais .instagram i { color: #E1306C; }
+.redes-sociais .github i { color: #fafafa; }
+.redes-sociais .linkedin i { color: #0a66c2; }
+.redes-sociais a { border: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* Imagem quebrada do tread vira banner DNC */
+.img-tread {
+    background-image: none;
+    background: linear-gradient(135deg, #8fe20e, #00c853 45%, #00b0ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-tread::after {
+    content: "DNC";
+    font-weight: 900;
+    font-size: 2rem;
+    letter-spacing: 0.35em;
+    color: rgba(0, 0, 0, 0.55);
+    padding-left: 0.35em;
+}
+
+/* Gradiente vivo no widget portfólio */
+.widget4 {
+    background: linear-gradient(135deg, #8fe20e, #d4f542);
+    box-shadow: 0 8px 28px rgba(143, 226, 14, 0.35);
+}
+
+/* ============ LOADING: carinha + CD ============ */
+#loading-screen {
+    background: radial-gradient(circle at 50% 40%, #1e2b12 0%, #151515 70%);
+    flex-direction: column;
+}
+.loader-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    z-index: 10;
+}
+.vinyl {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, #8fe20e 0 16%, transparent 17%),
+        repeating-radial-gradient(circle, #2a2a2a 0 2px, #161616 2px 4px);
+    border: 2px solid #333;
+    box-shadow: 0 0 40px rgba(143, 226, 14, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotate 2.5s linear infinite;
+    position: relative;
+}
+.vinyl::after {
+    content: "♪";
+    position: absolute;
+    top: -14px;
+    right: 6px;
+    font-size: 1.6rem;
+    color: #8fe20e;
+    animation: pulse 1s infinite ease-in-out;
+}
+.vinyl-hole {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #8fe20e;
+    border: 3px solid #101010;
+}
+#smiley { width: 92px; height: 92px; }
+#smiley .face { fill: #202020; stroke: #8fe20e; stroke-width: 4; }
+#smiley .eye { fill: #fafafa; }
+#smiley .cheek { fill: #ff6b81; opacity: 0; transition: opacity 0.4s; }
+#smiley .mouth { stroke: #fafafa; stroke-width: 5; stroke-linecap: round; fill: none; transition: all 0.4s; }
+#smiley.happy .cheek { opacity: 0.85; }
+#smiley.happy { animation: pulse 0.8s ease-in-out 2; }
+#loading-text {
+    position: static;
+    color: var(--color-white);
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 10;
+}
+#loading-bar { opacity: 0.35; }
+
+/* ============ WIDGET 6: música ============ */
+.widget6 {
+    width: 100%;
+    background-color: var(--color-black);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.music-player {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.cd-mini {
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, #8fe20e 0 18%, transparent 19%),
+        repeating-radial-gradient(circle, #333 0 2px, #141414 2px 4px);
+    border: 2px solid #3a3a3a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cd-mini span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #8fe20e;
+    border: 2px solid #101010;
+}
+.cd-mini.spinning { animation: rotate 1.8s linear infinite; box-shadow: 0 0 18px rgba(143, 226, 14, 0.5); }
+.music-info { flex: 1; display: flex; flex-direction: column; }
+.music-info small { color: #fafafab4; font-size: 0.75rem; }
+#btnPlay {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #8fe20e, #00c853);
+    color: #101010;
+    font-size: 1.2rem;
+    box-shadow: 0 6px 20px rgba(143, 226, 14, 0.4);
+    transition: transform 0.2s;
+}
+#btnPlay:hover { transform: scale(1.08); }
+.spotify-embed iframe { border-radius: 8px; display: block; }
