@@ -1,12 +1,11 @@
 /* ============================================================
-   CONFIG: troque pelo ID da SUA playlist pública do Spotify
-   ("Minhas favoritas"). Como pegar: app Spotify > sua playlist
+   CONFIG: playlist de FOCO NO TRABALHO (lofi beats, Spotify).
+   Para usar SUA playlist: app Spotify > sua playlist
    > Compartilhar > Copiar link > o ID é o trecho após
-   "playlist/". As "Músicas curtidas" não têm link público,
-   então crie uma playlist pública com elas. Para tocar em
-   aleatório, ative o shuffle dentro do player.
+   "playlist/". Para tocar em aleatório, ative o shuffle
+   dentro do player.
    ============================================================ */
-const SPOTIFY_PLAYLIST_ID = "37i9dQZEVXbMXbN3EUUhlg"; // Top Brasil (temporário)
+const SPOTIFY_PLAYLIST_ID = "37i9dQZF1DWWQRwui0ExPn"; // lofi beats
 
 /* ---------- Tela de carregamento: carinha + CD ---------- */
 document.addEventListener("DOMContentLoaded", function () {
